@@ -9,36 +9,57 @@ function App() {
   // lightColor should be a string that starts out as 'red'
   const [lightColor, setLightColor] = useState('red');
   // lizardSize should be a number that starts out as 10
-  const [lizardSize, setLizardSize] = useState('10');
+  const [lizardSize, setLizardSize] = useState(10);
   // alienSize should be a number that starts out as 10
-  const [alienSize, setAlienSize] = useState('10');
+  const [alienSize, setAlienSize] = useState(10);
   // traffic is complicated. It should be an array of strings that starts out as ['car', 'truck']
   const [traffic, setTraffic] = useState(['car', 'truck']);
 
+  function handleIncrementLizardWidth() {
+    setLizardSize(lizardSize + 10);
+  }
+
+  function handleIncrementAlienWidth() {
+    setAlienSize(alienSize + 10);
+  }
+
+  function handleDecrementLizardWidth() {
+    while (lizardSize) return setLizardSize(lizardSize - 10);
+  }
+
+  function handleDecrementAlienWidth() {
+    while (alienSize) return setAlienSize(alienSize - 10);
+  }
+
+  console.log('||' + alienSize, lizardSize);
+
   return (
     <div className="App">
+
       <div className="fight">
         <div className="monster">
           {/* the width of the alien should be ten times whatever the alien size is in state */}
-          <img src="alien.png" width={20} />
+          <img src="alien.png" width={alienSize} />
           <div className='buttons'>
             {/* when you click this button, the alien's size in state should go up by one */}
-            <button>Oh no! The alien is gobblin up all the electricity!</button>
+            <button onClick={handleIncrementAlienWidth}>Oh no! The alien is gobbling up all the electricity!</button>
             {/* when you click this button, the lizard's size in state should go down by one */}
-            <button >Amazing! The alien zapped the lizard!</button>
+            <button onClick={handleDecrementLizardWidth}>Amazing! The alien zapped the lizard!</button>
           </div>
         </div>
+        
         <div className="monster">
           {/* the width of the lizard should be ten times whatever the alien size is in state */}
-          <img src="lizard.png" width={20} />
+          <img src="lizard.png" width={lizardSize} />
           <div className="buttons">
             {/* when you click this button, the lizard's size in state should go up by one */}
-            <button>Yegads! The lizard is ramping up to its final form!</button>
+            <button onClick={handleIncrementLizardWidth}>Yegads! The lizard is ramping up to its final form!</button>
             {/* when you click this button, the alien's size in state should go up by one */}
-            <button>Oh my! The lizard chomped down on the alien!</button>
+            <button onClick={handleDecrementAlienWidth}>Oh my! The lizard chomped down on the alien!</button>
           </div>
         </div>
       </div>
+
       <TrafficLight color={lightColor} />
       <div className="buttons">
         {/* when you click this button, the color of the light in state should be set to 'red' */}
@@ -48,6 +69,7 @@ function App() {
         {/* when you click this button, the color of the light in state should be set to 'green' */}
         <button>Green</button>
       </div>
+
       {/* 
       the VehicleList component takes in one prop: vehicles.
       This prop should be an array of strings like ['car', 'truck', 'truck', 'car', 'bus'].
