@@ -16,19 +16,19 @@ function App() {
   const [traffic, setTraffic] = useState(['car', 'truck']);
 
   function handleIncrementLizardWidth() {
-    setLizardSize(lizardSize + 10);
+    setLizardSize(lizardSize + 1);
   }
 
   function handleIncrementAlienWidth() {
-    setAlienSize(alienSize + 10);
+    setAlienSize(alienSize + 1);
   }
 
   function handleDecrementLizardWidth() {
-    while (lizardSize) return setLizardSize(lizardSize - 10);
+    while (lizardSize) return setLizardSize(lizardSize - 1);
   }
 
   function handleDecrementAlienWidth() {
-    while (alienSize) return setAlienSize(alienSize - 10);
+    while (alienSize) return setAlienSize(alienSize - 1);
   }
 
   console.log('||' + alienSize, lizardSize);
@@ -39,7 +39,7 @@ function App() {
       <div className="fight">
         <div className="monster">
           {/* the width of the alien should be ten times whatever the alien size is in state */}
-          <img src="alien.png" width={alienSize} />
+          <img src="alien.png" width={(alienSize * 10)} />
           <div className='buttons'>
             {/* when you click this button, the alien's size in state should go up by one */}
             <button onClick={handleIncrementAlienWidth}>Oh no! The alien is gobbling up all the electricity!</button>
@@ -50,7 +50,7 @@ function App() {
         
         <div className="monster">
           {/* the width of the lizard should be ten times whatever the alien size is in state */}
-          <img src="lizard.png" width={lizardSize} />
+          <img src="lizard.png" width={(lizardSize * 10)} />
           <div className="buttons">
             {/* when you click this button, the lizard's size in state should go up by one */}
             <button onClick={handleIncrementLizardWidth}>Yegads! The lizard is ramping up to its final form!</button>
