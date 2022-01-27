@@ -73,17 +73,17 @@ function App() {
       This prop should be an array of strings like ['car', 'truck', 'truck', 'car', 'bus'].
       Do you have something like that in state that you could pass as a vehicles prop? 
       */}
-      <VehicleList />
+      <VehicleList traffic={traffic} />
       <div className='buttons'>
         {/* This part is weird */}
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'car' to the end */}
-        <button>Car</button>
+        <button onClick={() => setTraffic([...traffic, 'car'])}>Car</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'bus' to the end */}
-        <button>Bus</button>
+        <button onClick={() => setTraffic([...traffic, 'bus'])}>Bus</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'truck' to the end */}
-        <button>Truck</button>
+        <button onClick={() => setTraffic([...traffic, 'truck'])}>Truck</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'motorcycle' to the end */}
-        <button>Motorcycle</button>
+        <button onClick={() => setTraffic([...traffic, 'motorcycle'])}>Motorcycle</button>
       </div>
 
     </div>

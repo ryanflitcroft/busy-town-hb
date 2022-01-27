@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function TrafficLight(props) {
-  console.log('||' + props.color);
+  // console.log('||' + props.color);
 
   
   return (
